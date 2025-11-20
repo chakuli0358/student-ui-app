@@ -1,0 +1,32 @@
+pipeline{
+
+    agent{label'slave'}
+
+    stages{
+        stage("code"){
+            steps{
+                echo"this is clonning the code"
+                git branch: 'main', url: 'https://github.com/chakuli0358/student-ui-app.git'
+                echo"code clonning succesfully"
+            }   
+        }
+
+        stage("build"){
+            steps{
+                sh 'mvn package'
+            }
+        }
+
+        stage("test"){
+            steps{
+                echo"this is testing the code"
+            }
+        }
+
+        stage("deploy"){
+            steps{
+                echo"this is deploying the code"
+            }
+        }
+    }
+}
